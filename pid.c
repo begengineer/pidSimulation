@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// controller構造体
 typedef struct {
     double Kp;
     double Ki;
@@ -10,6 +11,7 @@ typedef struct {
     double out_max;
 } PIDController;
 
+// コントローラの初期化関数
 void pid_init(PIDController *pid, double Kp, double Ki, double Kd,
               double out_min, double out_max)
 {
@@ -22,6 +24,7 @@ void pid_init(PIDController *pid, double Kp, double Ki, double Kd,
     pid->out_max = out_max;
 }
 
+// 制御更新関数
 double pid_update(PIDController *pid, double setpoint, double measurement, double dt)
 {
     double error = setpoint - measurement;
